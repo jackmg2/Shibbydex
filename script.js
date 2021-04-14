@@ -1,9 +1,9 @@
-var client;
-var audio = document.getElementById('audio');
-var testTimeout;
-var timelineInSeconds = [];
+let client;
+let testTimeout;
+let timelineInSeconds = [];
 
 //Register to player events
+let audio = document.getElementById('audio');
 audio.load();
 audio.onended = function () {
   stop();
@@ -63,7 +63,7 @@ function ready() {
 
 function checkVibration(currentTimeInSeconds) {
   if (timelineInSeconds) {
-    var progression = timelineInSeconds.filter((i) => i.timespan <= currentTimeInSeconds);
+    let progression = timelineInSeconds.filter((i) => i.timespan <= currentTimeInSeconds);
     if (progression && progression.length > 0) {
       progression = progression[progression.length - 1];
       let vibration = progression.vibration;
@@ -75,7 +75,7 @@ function checkVibration(currentTimeInSeconds) {
 }
 
 function Vibrate(device, power) {
-  client.SendDeviceMessage(device, device.SendVibrateCmd(power));
+  device.vibrate(power);
 }
 
 function stopAllToys() {
@@ -90,29 +90,31 @@ function generateDeviceLi(device) {
   return li;
 }
 
-let connectToys = async (connectAddress) => {
+async function connectToys() {
+  await Buttplug.buttplugInit();
+  const connector = new Buttplug.ButtplugEmbeddedConnectorOptions();
   client = new Buttplug.ButtplugClient("Client");
-  let ul = $('#yourdevices');
-  ul.empty();
 
   client.addListener('deviceadded', async (device) => {
     $("#button-enterRoom").prop("disabled", false);
     li = generateDeviceLi(device);
 
-    ul.append(li);
-    await client.StopScanning();
+    ul.append(li);    
     $("#sctnSync").hide();
     $("#sctnToys").show();
     $("#sctnCalibration").show();
+    
+    await client.stopScanning();
   });
 
   try {
-    const connector = new Buttplug.ButtplugEmbeddedClientConnector();
-    await client.Connect(connector);
+    await client.connect(connector);
   } catch (e) {
     console.log(e);
     return;
   }
+  let ul = $('#yourdevices');
+  ul.empty();
 
-  await client.StartScanning();
-}
+  await client.startScanning();
+};
