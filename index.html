@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Shibbydex</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" href="https://shibbydex.com/favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="normalize.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/buttplug@0.11.2/dist/web/buttplug.min.js" defer></script>
+
+</head>
+
+<body>
+    <div id="content">
+        <div id="main">
+            <h1>Dropped into Tentacles</h1>
+            <div>
+                <section id="sctnSync" class="toys">
+                    <div id="buttons">
+                        <button id="buttplug-local-button" class="button" onclick="connectToys();">Sync</button>
+                    </div>
+                </section>
+                <section id="sctnToys">
+                    <h2>Your toys</h2>
+                    <ul id="yourdevices">
+
+                    </ul>
+                </section>
+                <section id="sctnCalibration">
+                    <button id="btnTestStart" onclick="launchTest();">Try it</button>
+                    <button id="btnTestStop" onclick="stopTest();">Stop</button>
+                    <button id="btnTestReady" onclick="ready();">It works, I'm ready!</button>
+                </section>
+                <section id="sctnPodcast">
+                    <div class="player">
+                        <audio id="audio" controls>
+                            <source id="podcastSource"
+                                src="https://cdn.shibbydex.com/0b089bf4-689d-49d0-b0df-a1a3e03de38b.mp3"
+                                type="audio/mpeg">
+                        </audio>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./Dropped into Tentacles.funscript"></script>
+    <script type="text/javascript" src="./script.js" defer></script>
+</body>
+
+</html>
