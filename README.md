@@ -4,4 +4,4 @@ The goal of this prototype is to allow an user to connect an haptic device, disp
 
 ## Quickstart
 
-This prototype need to be launched throught a web server. You can use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) from [VS Code](https://code.visualstudio.com/).
+This prototype need to be launched through a web server. You can use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) from [VS Code](https://code.visualstudio.com/).
